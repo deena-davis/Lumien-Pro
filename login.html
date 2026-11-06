@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome to Lumien | Sign In</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --lumien-primary: #6c4df6;
+            --lumien-secondary: #9b7cff;
+            --lumien-dark: #18152b;
+            --lumien-text: #625f72;
+            --lumien-light: #f7f6ff;
+            --lumien-border: #e8e5f4;
+            --lumien-green: #52b788;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", sans-serif;
+            color: var(--lumien-dark);
+            background: #fff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           MAIN AUTH WRAPPER
+        ========================= */
+
+        .lumien-auth-wrapper {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(108, 77, 246, .10), transparent 28%),
+                radial-gradient(circle at 90% 90%, rgba(155, 124, 255, .12), transparent 30%),
+                #fbfaff;
+            display: flex;
+            align-items: center;
+            padding: 30px 0;
+            overflow: hidden;
+        }
+
+        .auth-container {
+            max-width: 1240px;
+            margin: auto;
+        }
+
+        /* =========================
+           LEFT CONTENT
+        ========================= */
+
+        .auth-info {
+            position: relative;
+            height: 100%;
+            min-height: 700px;
+            padding: 55px;
+            border-radius: 32px;
+            overflow: hidden;
+            background:
+                linear-gradient(145deg, #17132d 0%, #282052 55%, #4b3a87 100%);
+            color: #fff;
+        }
+
+        .auth-info::before {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(155, 124, 255, .16);
+            top: -130px;
+            right: -100px;
+        }
+
+        .auth-info::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(108, 77, 246, .18);
+            bottom: -120px;
+            left: -80px;
+        }
+
+        .lumien-logo {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 70px;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #9e85ff, #684df3);
+            box-shadow: 0 10px 30px rgba(108, 77, 246, .35);
+        }
+
+        .auth-info-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 50px;
+            background: rgba(255,255,255,.08);
+            color: #d9d3ff;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .small-label span {
+            width: 7px;
+            height: 7px;
+            background: #65d69a;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px rgba(101,214,154,.12);
+        }
+
+        .auth-info h1 {
+            font-size: clamp(36px, 4vw, 56px);
+            line-height: 1.08;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .auth-info h1 span {
+            color: #a993ff;
+        }
+
+        .auth-description {
+            max-width: 510px;
+            color: #c8c3dc;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        /* =========================
+           FEATURE LIST
+        ========================= */
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 15px 17px;
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 17px;
+            background: rgba(255,255,255,.055);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            flex: 0 0 42px;
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.1);
+            color: #b9a9ff;
+            font-size: 19px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .feature-item p {
+            margin: 0;
+            color: #aaa5bd;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+.lumien-logo-new {
+    height: 60px;
+}
+        /* =========================
+           FLOATING CARD
+        ========================= */
+
+        .progress-card {
+            position: absolute;
+            z-index: 3;
+            right: 35px;
+            bottom: 30px;
+            width: 190px;
+            padding: 17px;
+            border-radius: 20px;
+            background: rgba(255,255,255,.96);
+            color: var(--lumien-dark);
+            box-shadow: 0 25px 60px rgba(0,0,0,.25);
+        }
+
+        .progress-card .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 13px;
+        }
+
+        .progress-card small {
+            color: #817d91;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .progress-card strong {
+            font-size: 17px;
+        }
+
+        .progress-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eeeaff;
+            color: var(--lumien-primary);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .progress-line {
+            height: 6px;
+            border-radius: 10px;
+            background: #eeeaf7;
+            overflow: hidden;
+        }
+
+        .progress-line span {
+            display: block;
+            width: 82%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #6c4df6, #a18aff);
+        }
+
+        /* =========================
+           RIGHT LOGIN AREA
+        ========================= */
+
+        .auth-form-wrapper {
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 55px;
+        }
+
+        .auth-form {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #777287;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 65px;
+            transition: .3s;
+        }
+
+        .back-home:hover {
+            color: var(--lumien-primary);
+            transform: translateX(-3px);
+        }
+
+        .form-heading {
+            margin-bottom: 30px;
+        }
+
+        .form-heading h2 {
+            font-size: 35px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .form-heading p {
+            color: var(--lumien-text);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* =========================
+           AUTH TABS
+        ========================= */
+
+        .auth-tabs {
+            display: flex;
+            gap: 5px;
+            background: #f1eff8;
+            padding: 5px;
+            border-radius: 13px;
+            margin-bottom: 27px;
+        }
+
+        .auth-tabs button {
+            width: 50%;
+            border: 0;
+            padding: 11px;
+            border-radius: 9px;
+            background: transparent;
+            color: #777287;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .auth-tabs button.active {
+            background: #fff;
+            color: var(--lumien-dark);
+            box-shadow: 0 4px 15px rgba(32,20,80,.08);
+        }
+
+        /* =========================
+           GOOGLE BUTTON
+        ========================= */
+
+        .google-btn {
+            width: 100%;
+            height: 53px;
+            border: 1px solid var(--lumien-border);
+            border-radius: 13px;
+            background: #fff;
+            color: #292636;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: .3s;
+        }
+
+        .google-btn:hover {
+            border-color: #cfc8ed;
+            box-shadow: 0 10px 25px rgba(48,34,100,.08);
+            transform: translateY(-1px);
+        }
+
+        .google-icon {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           DIVIDER
+        ========================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #aaa6b5;
+            font-size: 11px;
+            margin: 25px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--lumien-border);
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #373342;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap > i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa5b6;
+            font-size: 16px;
+            z-index: 2;
+        }
+
+        .form-control {
+            height: 53px;
+            border: 1px solid var(--lumien-border);
+            border-radius: 13px;
+            padding: 0 16px 0 46px;
+            color: #292636;
+            font-size: 13px;
+            font-family: inherit;
+            background: #fff;
+            box-shadow: none !important;
+            transition: .3s;
+        }
+
+        .form-control:focus {
+            border-color: #8c74f8;
+            background: #fff;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #9994a6;
+            cursor: pointer;
+        }
+
+        .password-input {
+            padding-right: 45px;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0 24px;
+        }
+
+        .form-check {
+            min-height: auto;
+        }
+
+        .form-check-input {
+            width: 15px;
+            height: 15px;
+            margin-top: 2px;
+            border-color: #d5d0e1;
+        }
+
+        .form-check-label {
+            font-size: 11px;
+            color: #777287;
+            margin-left: 3px;
+        }
+
+        .forgot-password {
+            color: var(--lumien-primary);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .login-btn {
+            width: 100%;
+            height: 54px;
+            border: 0;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #6c4df6, #8c70fa);
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 12px 25px rgba(108,77,246,.25);
+            transition: .3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 17px 32px rgba(108,77,246,.32);
+        }
+
+        .login-btn i {
+            margin-left: 7px;
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: 25px;
+            color: #85808f;
+            font-size: 12px;
+        }
+
+        .signup-text a {
+            color: var(--lumien-primary);
+            font-weight: 800;
+        }
+
+        .privacy-text {
+            text-align: center;
+            color: #aaa6b5;
+            font-size: 10px;
+            line-height: 1.6;
+            margin-top: 40px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 991.98px) {
+
+            .lumien-auth-wrapper {
+                padding: 15px;
+            }
+
+            .auth-info {
+                min-height: auto;
+                padding: 35px;
+            }
+
+            .auth-info h1 {
+                font-size: 40px;
+            }
+
+            .progress-card {
+                display: none;
+            }
+
+            .auth-form-wrapper {
+                min-height: auto;
+                padding: 45px 25px;
+            }
+
+            .back-home {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+
+            .lumien-auth-wrapper {
+                padding: 0;
+            }
+
+            .auth-info {
+                border-radius: 0 0 28px 28px;
+                padding: 30px 25px;
+            }
+
+            .lumien-logo {
+                margin-bottom: 40px;
+            }
+
+            .auth-info h1 {
+                font-size: 34px;
+                letter-spacing: -1px;
+            }
+
+            .auth-description {
+                font-size: 14px;
+            }
+
+            .feature-item {
+                padding: 12px;
+            }
+
+            .auth-form-wrapper {
+                padding: 40px 22px;
+            }
+
+            .form-heading h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="lumien-auth-wrapper">
+
+    <div class="container-fluid auth-container">
+
+        <div class="row g-0 align-items-stretch">
+
+            <!-- =========================
+                 LEFT SIDE
+            ========================== -->
+            <div class="col-lg-6">
+
+                <div class="auth-info">
+
+                    <!-- Logo -->
+                    <a href="index.html" class="lumien-logo">
+                        <img src="assets/img/logofooter.png" class="lumien-logo-new" alt="logo">
+                    </a>
+
+                    <div class="auth-info-content">
+
+                        <div class="small-label">
+                            <span></span>
+                            AI-powered homeschool companion
+                        </div>
+
+                        <h1>
+                            Know your child
+                            <span>is on track.</span>
+                        </h1>
+
+                        <p class="auth-description">
+                            Lumien grades the work, catches the gaps, and
+                            tutors every child through them — the loop no
+                            single app closes.
+                        </p>
+
+                        <!-- Features -->
+                        <div class="feature-list">
+
+                            <div class="feature-item">
+
+                                <div class="feature-icon">
+                                    <i class="bi bi-stars"></i>
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        An AI tutor for every child
+                                    </strong>
+
+                                    <p>
+                                        Spark explains, quizzes, and grades
+                                        handwritten work in seconds.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="feature-item">
+
+                                <div class="feature-icon">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        Compliance, handled
+                                    </strong>
+
+                                    <p>
+                                        State-aware records, automatically
+                                        generated and print-ready.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="feature-item">
+
+                                <div class="feature-icon">
+                                    <i class="bi bi-clock-history"></i>
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        Get 5+ hours back a week
+                                    </strong>
+
+                                    <p>
+                                        Lumien handles the grading and
+                                        planning so you can teach.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Floating Progress Card -->
+                    <div class="progress-card">
+
+                        <div class="card-top">
+
+                            <div>
+                                <small>LEARNING PROGRESS</small>
+                                <strong>On track</strong>
+                            </div>
+
+                            <div class="progress-circle">
+                                82%
+                            </div>
+
+                        </div>
+
+                        <div class="progress-line">
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RIGHT SIDE
+            ========================== -->
+            <div class="col-lg-6">
+
+                <div class="auth-form-wrapper">
+
+                    <div class="auth-form">
+
+                        <!-- Back -->
+                        <a href="index.html" class="back-home">
+                            <i class="bi bi-arrow-left"></i>
+                            Back to home
+                        </a>
+
+                        <!-- Heading -->
+                        <div class="form-heading">
+
+                            <h2>Welcome to Lumien</h2>
+
+                            <p>
+                                Sign in or create your account to continue.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Tabs -->
+                        <div class="auth-tabs">
+
+                            <button class="active" type="button">
+                                Sign In
+                            </button>
+
+                            <button type="button">
+                                Sign Up
+                            </button>
+
+                        </div>
+
+
+                        <!-- Google -->
+                        <button type="button" class="google-btn">
+
+                            <span class="google-icon">
+                                G
+                            </span>
+
+                            Continue with Google
+
+                        </button>
+
+
+                        <!-- Divider -->
+                        <div class="divider">
+                            or sign in with email
+                        </div>
+
+
+                        <!-- Login Form -->
+                        <form action="#" method="post">
+
+                            <!-- Email -->
+                            <div class="form-group">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <i class="bi bi-envelope"></i>
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        placeholder="you@example.com"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Password -->
+                            <div class="form-group">
+
+                                <label class="form-label">
+                                    Password
+                                </label>
+
+                                <div class="input-wrap">
+
+                                    <i class="bi bi-lock"></i>
+
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        class="form-control password-input"
+                                        placeholder="Enter your password"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        onclick="togglePassword()"
+                                    >
+                                        <i class="bi bi-eye" id="eyeIcon"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Options -->
+                            <div class="form-options">
+
+                                <div class="form-check">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="remember"
+                                    >
+
+                                    <label
+                                        class="form-check-label"
+                                        for="remember"
+                                    >
+                                        Remember me
+                                    </label>
+
+                                </div>
+
+                                <a href="#" class="forgot-password">
+                                    Forgot password?
+                                </a>
+
+                            </div>
+
+
+                            <!-- Submit -->
+                            <button
+                                type="submit"
+                                class="login-btn"
+                            >
+                                Sign In
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </form>
+
+
+                        <!-- Signup -->
+                        <div class="signup-text">
+                            Don't have an account?
+                            <a href="#">Create one</a>
+                        </div>
+
+
+                        <!-- Privacy -->
+                        <div class="privacy-text">
+                            Trusted by homeschool families ·
+                            Your child's data stays in your private vault.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    function togglePassword() {
+
+        const password = document.getElementById("password");
+        const icon = document.getElementById("eyeIcon");
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
